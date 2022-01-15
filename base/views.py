@@ -36,4 +36,3 @@ class TaskDelete(DeleteView):
     success_url = reverse_lazy('tasks')
 
 
-    
