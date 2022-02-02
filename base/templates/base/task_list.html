@@ -18,12 +18,18 @@
 
 <!--<hr>-->
 <!--<h1>My To Do List{{color}}</h1>-->
-<!--<a href="{% url 'task-create' %}">Add Task</a>-->
 
-<!--<form method="GET">-->
-<!--    <input type="text" name="search-area" value="{{search_input}}">-->
-<!--    <input type="submit" value="Search">-->
-<!--</form>-->
+<div class="search-add-wrapper">
+<form method="GET" style="margin-top:20px; display:flex;">
+    <input type="text" name="search-area" value="{{search_input}}">
+    <input type="submit" value="Search">
+</form>
+    <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+
+
+</div>
+
+
 
 
 <div class="task-items-wrapper">
@@ -36,6 +42,7 @@
 
     <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
 </div>
+    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
 
     {% else %}
 
@@ -45,8 +52,10 @@
 
     <a href="{% url 'task-update' task.id %}">{{task}}</a>
 </div>
+    <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
 
 {% endif %}
+
 
 </div>
 
@@ -57,28 +66,5 @@
 
 </div>
 
-<table>
-    <tr>
-        <th>Item</th>
-        <th></th>
-                <th></th>
-                <th></th>
-
-    </tr>
-
-    {% for task in tasks %}
-
-        <tr>
-        <td>{{task.title}}</td>
-<!--         <td><a href="{% url 'task' task.id %}">View</a></td>-->
-         <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
-         <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
-
-    </tr>
-
-    {% empty %}
-    <h3>No items in the list</h3>
-    {% endfor %}
-</table>
 
 {% endblock content %}
